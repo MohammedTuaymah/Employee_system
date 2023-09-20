@@ -18,8 +18,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+    
 
-Auth::routes();
+//Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::group(['middleware'=>['auth','has.permission']],function(){
 
@@ -38,4 +40,5 @@ Route::group(['middleware'=>['auth','has.permission']],function(){
     Route::get('/mail','MailController@create')->name('mails.create');
     Route::post('/mail','MailController@store')->name('mails.store');
 });
+
 
